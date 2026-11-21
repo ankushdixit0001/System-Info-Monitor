@@ -1,2 +1,9 @@
-.DS_Store
+venv/
+.venv/
+__pycache__/
+*.py[cod]
 .env
+.DS_Store
+.pytest_cache/
+.vscode/
+.idea/
