@@ -1,66 +1,46 @@
-# SystemPulse
+# SystemScope — PC Insights
 
-A small, cross-platform system monitoring dashboard built with Python, Flask, psutil, and Chart.js.
+SystemScope is a lightweight, browser-based system information dashboard for Windows, macOS and Linux (including Ubuntu). Run a read-only scan locally, import the generated JSON snapshot, and explore your operating system, processor, memory, storage, network and uptime in one place.
 
-Monitor CPU, memory, disk usage, and running processes from a simple local web interface.
+## Live application
+
+https://system-info-monitor.vercel.app
+
+## Getting started
+
+1. Open the live application.
+2. Select your operating system: Windows, macOS or Ubuntu / Linux.
+3. Copy the matching scan command shown on the page.
+4. Run it in PowerShell (Windows) or Terminal (macOS / Linux).
+5. Copy the JSON output and paste it into SystemScope.
+6. Choose **Analyze my system** to view the report.
+7. Export your report as JSON, CSV or PDF if needed.
+
+macOS and Ubuntu/Linux commands use Python 3. Ubuntu normally includes Python 3. On macOS, install Python 3 if it is not already available.
 
 ## Features
-- Live CPU, RAM, and disk usage
-- Running process list with PID, status, CPU, and memory
-- Search processes by name or PID
-- CPU and RAM history charts
-- Basic system information
-- Windows, Linux, and macOS support through psutil
-- Read-only monitoring; no process termination or service modification
 
-## Requirements
-- Python 3.9+
-- pip
+- Windows, macOS and Linux scan instructions
+- Operating system, device and processor details
+- Installed and available memory
+- Disk capacity and usage
+- Local IPv4 and network adapter MAC address
+- System uptime and last boot time
+- Snapshot import with validation
+- Sample data for exploring the dashboard
+- JSON and CSV export, plus print-to-PDF
 
-## Run on Windows (PowerShell)
-```powershell
-python -m venv venv
-.\venv\Scripts\Activate.ps1
-pip install -r requirements.txt
-python app.py
-```
+## Privacy and security
 
-## Run on Linux / macOS
-```bash
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-python app.py
-```
+SystemScope is a static frontend. It does not remotely inspect your computer. The scan command runs locally and collects read-only system details; you choose whether to paste the result into the page. The pasted snapshot is processed in your browser and is not sent to a backend by this application.
 
-Open **http://127.0.0.1:5000** in your browser and stop the server with Ctrl+C.
+Reports may contain device names, local IP addresses and MAC addresses. Review the contents before sharing them.
 
-## Project structure
-```
-SystemPulse/
-├── app.py
-├── monitor.py
-├── requirements.txt
-├── templates/index.html
-├── static/style.css
-├── static/app.js
-├── README.md
-├── LICENSE
-└── .gitignore
-```
+## Deploy on Vercel
 
-## API
-| Method | Endpoint | Description |
-|---|---|---|
-| GET | `/api/system` | CPU, memory, disk, uptime and system details |
-| GET | `/api/processes` | Current process list; optional `?search=` |
-| GET | `/api/performance` | Current CPU and memory readings |
+- Framework preset: **Other**
+- Build command: leave empty
+- Output directory: `. ` (repository root; configure as `.`)
+- Install command: leave empty
 
-## Notes
-- The dashboard refreshes every three seconds.
-- Some process details may be unavailable due to OS permissions.
-- This is a local development application. Do not expose the Flask development server to an untrusted network.
-- Chart.js loads from a CDN, so the charts require an internet connection.
-
-## License
-MIT. See [LICENSE](LICENSE).
+Connect the GitHub repository to Vercel. Pushes to the `main` branch can trigger production deployments.
