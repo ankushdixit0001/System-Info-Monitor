@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="A lightweight local system monitoring dashboard">
+<title>SystemPulse — System Monitor</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head><body>
+<header class="topbar"><div class="logo">S</div><div><h1>SystemPulse</h1><p>System overview</p></div><span class="live">● LIVE</span></header>
+<main class="wrap">
+<section class="intro"><div><small>MONITORING</small><h2>Your system at a glance</h2><p id="host" class="muted">Collecting system information…</p></div><span class="refresh">Auto refresh · 3 sec</span></section>
+<section class="metrics">
+<article class="card"><div class="label">CPU usage</div><strong id="cpu-value">—%</strong><div class="track"><i id="cpu-bar"></i></div><p>Processor utilization</p></article>
+<article class="card"><div class="label">Memory usage</div><strong id="memory-value">—%</strong><div class="track"><i id="memory-bar"></i></div><p id="memory-detail">Used memory</p></article>
+<article class="card"><div class="label">Disk usage</div><strong id="disk-value">—%</strong><div class="track"><i id="disk-bar"></i></div><p>Root / system drive</p></article>
+</section>
+<section class="panel"><div class="heading"><div><small>PERFORMANCE</small><h2>Live activity</h2></div><span class="muted">Recent readings</span></div><div class="charts"><div><h3>CPU</h3><canvas id="cpu-chart"></canvas></div><div><h3>Memory</h3><canvas id="memory-chart"></canvas></div></div></section>
+<section class="panel"><div class="heading processes"><div><small>ACTIVITY</small><h2>Running processes</h2></div><input id="search" type="search" placeholder="Search process or PID…" aria-label="Search processes"></div>
+<div class="scroll"><table><thead><tr><th>PROCESS</th><th>PID</th><th>STATUS</th><th>CPU</th><th>MEMORY</th></tr></thead><tbody id="processes"><tr><td colspan="5">Loading…</td></tr></tbody></table></div><p id="count" class="muted note">Read-only process information</p></section>
+<section class="panel"><div class="heading"><div><small>DEVICE</small><h2>System information</h2></div></div><div class="info"><div><span>Operating system</span><b id="os">—</b></div><div><span>Hostname</span><b id="hostname">—</b></div><div><span>CPU cores</span><b id="cores">—</b></div><div><span>Uptime</span><b id="uptime">—</b></div><div><span>Python</span><b id="python">—</b></div></div></section>
+<footer>SystemPulse · Local, read-only system monitoring</footer>
+</main><script src="{{ url_for('static', filename='app.js') }}"></script></body></html>
